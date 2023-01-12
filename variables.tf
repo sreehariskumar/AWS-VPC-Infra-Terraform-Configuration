@@ -14,13 +14,11 @@ variable "region" {
 }
 
 variable "access_key" {
-  default = "AKIASXJHQP6OXN7WYWF7"
-  #description = project access key
+  default = "xxxxxxxxxx"
 }
 
 variable "secret_key" {
-  default = "Z9FkwaoBargnrt06J8i7ZVu/A+cj9Na3QhTzPzOt"
-  #description = project secret key
+  default = "xxxxxxxxxx"
 }
 
 variable "instance_ami" {
@@ -64,7 +62,7 @@ locals {
 variable "public_ips" {
   type = list(string)
   default = [
-    "49.37.233.72/32"
+    "xx.xx.xx.xx/32"
   ]
 }
 
