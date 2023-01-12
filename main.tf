@@ -1,5 +1,5 @@
 module "vpc" {
-  source      = "/mnt/HDD/Desktop/vpc_module/"
+  source      = "github.com/sreehariskumar/AWS-VPC-Modules"
   project     = var.project
   environment = var.environment
   vpc_cidr    = var.vpc_cidr
