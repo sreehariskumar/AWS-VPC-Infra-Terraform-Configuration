@@ -1,5 +1,6 @@
 # Reuse-Configuration-Using-Terraform-Modules 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+<br />
 A terraform project to automate the creation of a custom VPC instrasture from scratch using Terraform modules.
 
 #### The code is built using the following versions:
@@ -11,8 +12,8 @@ A terraform project to automate the creation of a custom VPC instrasture from sc
 - An IAM user with programmatic access with AmazonEC2FullAccess & AmazonRoute53FullAccess permissions attached.
 
 ## Why do you use modules? 
-You might've created the infrastructure for all of your projects using the same code each time. If you decide to make it a module, this can be avoided. 
-The module files need not have to be saved locally; they can instead be stored in github or even on AmazonS3. The module can be fetched from these sources using Terraform. 
+You might've created the infrastructure for all of your projects using the same code each time. If you decide to make it a module, this can be avoided. <br /><br />
+The module files need not have to be saved locally; they can instead be stored in github or even on AmazonS3. The module can be fetched from these sources using Terraform. <br /><br />
 In this project I have configured terraform to read the modules from my modules repository: [AWS-VPC-Modules](https://github.com/sreehariskumar/AWS-VPC-Modules).
 
 ## Let's get started
@@ -185,5 +186,4 @@ resource "aws_subnet" "public" {
 - Identification of each subnet block is achieved using the **count.index** block
 - The public subnets will be mapped with public ip using the **map_public_ip_on_launch** argument.
 
-- Similarly, the private subnets are created.
-- Public ip addresses will not be available for private subnets.
+- Similarly, the private subnets are created but, public ip addresses will not be available in private subnets.
