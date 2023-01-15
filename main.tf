@@ -3,6 +3,7 @@ module "vpc" {
   project     = var.project
   environment = var.environment
   vpc_cidr    = var.vpc_cidr
+  enable_nat_gateway = var.enable_nat_gateway 
 }
 
 resource "aws_ec2_managed_prefix_list" "prefix_list" {
