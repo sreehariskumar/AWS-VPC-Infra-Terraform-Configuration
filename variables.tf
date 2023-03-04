@@ -1,24 +1,21 @@
 variable "project" {
-  default     = "zomato"
-  description = "project name"
+  default = "zomato"
 }
 
 variable "environment" {
-  default     = "production"
-  description = "project env"
+  default = "production"
 }
 
 variable "region" {
-  default     = "ap-south-1"
-  description = "project region"
+  default = "ap-south-1"
 }
 
 variable "access_key" {
-  default = "xxxxxxxxxx"
+  default = "AKIASXJHQP6OTI3JEYAU"
 }
 
 variable "secret_key" {
-  default = "xxxxxxxxxx"
+  default = "0doUg/2ILLyCQTtXMJs3Af6XQmU0cR5XHv/pbSfB"
 }
 
 variable "instance_ami" {
@@ -34,13 +31,11 @@ variable "vpc_cidr" {
 }
 
 variable "private_domain" {
-  default     = "sreehari.local"
-  description = "domain in private hosted zone"
+  default = "sreehari.local"
 }
 
 variable "public_domain" {
-  default     = "1by2.online"
-  description = "record to access wordpress website"
+  default = "1by2.online"
 }
 
 variable "db_name" {
@@ -62,7 +57,7 @@ locals {
 variable "public_ips" {
   type = list(string)
   default = [
-    "xx.xx.xx.xx/32"
+    "49.37.235.58/32"
   ]
 }
 
@@ -72,20 +67,18 @@ variable "frontend_ports" {
 }
 
 variable "ssh_to_frontend" {
-  default = false
+  default = true
 }
 
 variable "ssh_to_backend" {
-  default = false
+  default = true
 }
 
 variable "backend_ports" {
-  type    = number
   default = 3306
 }
 
 variable "bastion_ports" {
-  type    = number
   default = 22
 }
 
@@ -94,4 +87,8 @@ locals {
     "project"     = var.project
     "environemnt" = var.environment
   }
+}
+
+variable "enable_nat_gateway" {
+  default = true
 }

@@ -8,6 +8,7 @@ service sshd restart
 hostnamectl set-hostname frontend
  
 amazon-linux-extras install php7.4 
+yum update all -y
 yum install httpd -y
  
 systemctl restart httpd

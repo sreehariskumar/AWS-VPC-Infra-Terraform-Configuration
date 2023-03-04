@@ -9,6 +9,7 @@ hostnamectl set-hostname backend
  
 rm -rf /var/lib/mysql/*
  
+#yum update all -y
 yum remove mysql -y
 yum install httpd mariadb-server -y
 systemctl restart mariadb.service
