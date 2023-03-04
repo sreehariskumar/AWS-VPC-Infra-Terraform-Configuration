@@ -530,7 +530,6 @@ resource "aws_route53_record" "wordpress" {
 
 Run the following commands
 ```s
-git clone https://github.com/sreehariskumar/Reuse-Configuration-Using-Terraform-Modules.git
 cd Reuse-Configuration-Using-Terraform-Modules
 terraform init
 terraform validate
