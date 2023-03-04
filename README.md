@@ -262,7 +262,7 @@ resource "aws_route" "enable_nat" {
 ### Now, we will look into the contents of project files.
 #### [main.tf](https://github.com/sreehariskumar/Reuse-Configuration-Using-Terraform-Modules/blob/main/main.tf)
 
-
+```s
 module "vpc" {
   source             = "github.com/sreehariskumar/AWS-VPC-Modules"
   project            = var.project
