@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 <br />
 <br />
-A terraform project to automate the creation of a custom VPC instrasture from scratch using Terraform modules.
+A terraform project to automate the creation of a custom VPC infrastructure from scratch using Terraform modules.
 
 #### The code is built using the following versions:
 | Provider | Terraform |
