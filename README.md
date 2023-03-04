@@ -261,9 +261,7 @@ resource "aws_route" "enable_nat" {
 
 ### Now, we will look into the contents of project files.
 #### [main.tf](https://github.com/sreehariskumar/Reuse-Configuration-Using-Terraform-Modules/blob/main/main.tf)
-#----------------------------------------------
-# fetching the modules from a GitHub repository
-#----------------------------------------------
+
 
 module "vpc" {
   source             = "github.com/sreehariskumar/AWS-VPC-Modules"
@@ -273,9 +271,6 @@ module "vpc" {
   enable_nat_gateway = var.enable_nat_gateway
 }
 
-#----------------------------------------------
-# creating a prefix list to be add public ip's into security groups
-#----------------------------------------------
 
 resource "aws_ec2_managed_prefix_list" "prefix_list" {
   name           = "${var.project}-${var.environment}-prefixlist"
@@ -295,9 +290,6 @@ resource "aws_ec2_managed_prefix_list" "prefix_list" {
 }
 
 
-#----------------------------------------------
-# creating security group for bastion server
-#----------------------------------------------
 
 resource "aws_security_group" "bastion" {
   name_prefix = "${var.project}-${var.environment}-bastion-"
@@ -329,9 +321,6 @@ resource "aws_security_group" "bastion" {
 }
 
 
-#----------------------------------------------
-# creating security group for backend server
-#----------------------------------------------
 
 resource "aws_security_group" "backend" {
   name_prefix = "${var.project}-${var.environment}-backend-"
@@ -371,9 +360,6 @@ resource "aws_security_group" "backend" {
 }
 
 
-#----------------------------------------------
-# creating security group for frontend server
-#----------------------------------------------
 
 resource "aws_security_group" "frontend" {
   name_prefix = "${var.project}-${var.environment}-frontend-"
@@ -426,19 +412,12 @@ resource "local_file" "frontend" {
 
 
 
-#----------------------------------------------
-# creating a ssh key pair
-#----------------------------------------------
-
 resource "tls_private_key" "key" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
 
 
-#----------------------------------------------
-# importing private key
-#----------------------------------------------
 
 resource "aws_key_pair" "ssh_key" {
   key_name   = "${var.project}-${var.environment}"
@@ -457,10 +436,6 @@ resource "aws_key_pair" "ssh_key" {
 }
 
 
-#----------------------------------------------
-# launching bastion instance
-#----------------------------------------------
-
 resource "aws_instance" "bastion" {
   ami                         = var.instance_ami
   instance_type               = var.instance_type
@@ -477,9 +452,6 @@ resource "aws_instance" "bastion" {
 }
 
 
-#----------------------------------------------
-# launching frontend instance
-#----------------------------------------------
 
 resource "aws_instance" "frontend" {
   ami                         = var.instance_ami
@@ -498,9 +470,6 @@ resource "aws_instance" "frontend" {
 }
 
 
-#----------------------------------------------
-# launching backend instance
-#----------------------------------------------
 
 resource "aws_instance" "backend" {
   ami                         = var.instance_ami
@@ -519,9 +488,6 @@ resource "aws_instance" "backend" {
 }
 
 
-#----------------------------------------------
-# creating a private hosted zone
-#----------------------------------------------
 
 resource "aws_route53_zone" "private" {
   name = var.private_domain
@@ -530,10 +496,6 @@ resource "aws_route53_zone" "private" {
   }
 }
 
-
-#----------------------------------------------
-# creating a record in private hosted zone to access db host
-#----------------------------------------------
 
 resource "aws_route53_record" "db" {
   zone_id = aws_route53_zone.private.zone_id
@@ -544,9 +506,7 @@ resource "aws_route53_record" "db" {
 }
 
 
-#----------------------------------------------
-# create a record in public hosted zone to access the wp site
-#----------------------------------------------
+create a record in public hosted zone to access the wp site
 
 resource "aws_route53_record" "wordpress" {
   zone_id = data.aws_route53_zone.mydomain.zone_id
@@ -554,14 +514,23 @@ resource "aws_route53_record" "wordpress" {
   type    = "A"
   ttl     = 300
   records = [aws_instance.frontend.public_ip]
-}```s
+}
 ```
+- **Modules**: The module block is used to fetch a module from a GitHub repository. In this case, we are fetching the AWS VPC modules from the specified repository.
+
+- **Resources**: The resource block is used to define an AWS resource. In this file, we are defining AWS resources such as security groups, managed prefix lists, SSH key pairs, etc. Each resource has a unique identifier called name, and Terraform will use this identifier to track the resource and manage its lifecycle.
+
+- **Variables**: The variable block is used to define input variables that can be passed to the Terraform configuration. These input variables can be used to customize the behavior of the configuration. For example, in this file, we are using variables to define the project name, environment, VPC CIDR, public IPs, backend ports, frontend ports, SSH access to frontend and backend, etc.
+
+- **Outputs**: The output block is used to define output variables that can be used to export data from the Terraform configuration. These output variables can be used to pass information between Terraform configurations.
+
 #### This configuration part is explained in detail in one of my earlier projects:
 #### [Wordpress-Installation-via-Bastion-Server-using-Terraform](https://github.com/sreehariskumar/Wordpress-Installation-via-Bastion-Server-using-Terraform)
 
 
 Run the following commands
 ```s
+git clone https://github.com/sreehariskumar/Reuse-Configuration-Using-Terraform-Modules.git
 cd Reuse-Configuration-Using-Terraform-Modules
 terraform init
 terraform validate
@@ -571,5 +540,6 @@ terraform apply
 
 <br />
 <br />
-Hi, 
+
+### Conclusion
 With this project you've discovered how to use Terraform modules to automate the creation of infrastructure in this post. Now that you know how to use Terraform, you should feel confident in automating your AWS infrastructure.
