@@ -1,5 +1,5 @@
 #----------------------------------------------
-#fetching the modules from a GitHub repository
+# fetching the modules from a GitHub repository
 #----------------------------------------------
 
 module "vpc" {
@@ -11,7 +11,7 @@ module "vpc" {
 }
 
 #----------------------------------------------
-#creating a prefix list to be add public ip's into security groups
+# creating a prefix list to be add public ip's into security groups
 #----------------------------------------------
 
 resource "aws_ec2_managed_prefix_list" "prefix_list" {
@@ -33,7 +33,7 @@ resource "aws_ec2_managed_prefix_list" "prefix_list" {
 
 
 #----------------------------------------------
-#creating security group for bastion server
+# creating security group for bastion server
 #----------------------------------------------
 
 resource "aws_security_group" "bastion" {
@@ -67,7 +67,7 @@ resource "aws_security_group" "bastion" {
 
 
 #----------------------------------------------
-#creating security group for backend server
+# creating security group for backend server
 #----------------------------------------------
 
 resource "aws_security_group" "backend" {
@@ -109,7 +109,7 @@ resource "aws_security_group" "backend" {
 
 
 #----------------------------------------------
-#creating security group for frontend server
+# creating security group for frontend server
 #----------------------------------------------
 
 resource "aws_security_group" "frontend" {
@@ -195,7 +195,7 @@ resource "aws_key_pair" "ssh_key" {
 
 
 #----------------------------------------------
-#launching bastion instance
+# launching bastion instance
 #----------------------------------------------
 
 resource "aws_instance" "bastion" {
@@ -215,7 +215,7 @@ resource "aws_instance" "bastion" {
 
 
 #----------------------------------------------
-#launching frontend instance
+# launching frontend instance
 #----------------------------------------------
 
 resource "aws_instance" "frontend" {
@@ -236,7 +236,7 @@ resource "aws_instance" "frontend" {
 
 
 #----------------------------------------------
-#launching backend instance
+# launching backend instance
 #----------------------------------------------
 
 resource "aws_instance" "backend" {
@@ -257,7 +257,7 @@ resource "aws_instance" "backend" {
 
 
 #----------------------------------------------
-#creating a private hosted zone
+# creating a private hosted zone
 #----------------------------------------------
 
 resource "aws_route53_zone" "private" {
@@ -269,7 +269,7 @@ resource "aws_route53_zone" "private" {
 
 
 #----------------------------------------------
-#creating a record in private hosted zone to access db host
+# creating a record in private hosted zone to access db host
 #----------------------------------------------
 
 resource "aws_route53_record" "db" {
@@ -282,7 +282,7 @@ resource "aws_route53_record" "db" {
 
 
 #----------------------------------------------
-#create a record in public hosted zone to access the wp site
+# create a record in public hosted zone to access the wp site
 #----------------------------------------------
 
 resource "aws_route53_record" "wordpress" {
