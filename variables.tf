@@ -11,15 +11,15 @@ variable "region" {
 }
 
 variable "access_key" {
-  default = "XXXXXXXXXX"
+  default = "your_access_key"
 }
 
 variable "secret_key" {
-  default = "XXXXXXXXXX"
+  default = "your_secret_key"
 }
 
 variable "instance_ami" {
-  default = "ami-0cca134ec43cf708f"
+  default = "your_ami_id"
 }
 
 variable "instance_type" {
@@ -31,11 +31,11 @@ variable "vpc_cidr" {
 }
 
 variable "private_domain" {
-  default = "sreehari.local"
+  default = "any_domain"
 }
 
 variable "public_domain" {
-  default = "1by2.online"
+  default = "your_public_domain"
 }
 
 variable "db_name" {
@@ -57,7 +57,7 @@ locals {
 variable "public_ips" {
   type = list(string)
   default = [
-    "49.37.235.58/32"
+    "ypur_public_ip/32"
   ]
 }
 
