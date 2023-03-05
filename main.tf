@@ -185,7 +185,7 @@ resource "aws_key_pair" "ssh_key" {
   }
   provisioner "local-exec" {
     when    = destroy
-    command = "rm -rf ./mysshkey.pem"
+    command = "rm -rf ./mykey.pem"
   }
 
   tags = {
