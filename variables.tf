@@ -11,11 +11,11 @@ variable "region" {
 }
 
 variable "access_key" {
-  default = "AKIASXJHQP6OTI3JEYAU"
+  default = "XXXXXXXXXX"
 }
 
 variable "secret_key" {
-  default = "0doUg/2ILLyCQTtXMJs3Af6XQmU0cR5XHv/pbSfB"
+  default = "XXXXXXXXXX"
 }
 
 variable "instance_ami" {
